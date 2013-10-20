@@ -5,7 +5,7 @@
 
     var projectRoot = process.cwd()+"/../../";
     var configSource = process.cwd()+"/dce-config.js";
-    var configDestination = projectRoot + "/dce-config.js";
+    var configDestination = projectRoot + "dce-config.js";
 
     function copyFile(source, target, cb) {
         var cbCalled = false;
@@ -34,12 +34,19 @@
         }
     }
 
-    copyFile(configSource, configDestination, function(err){
-        if(err)
-        {
-            console.log('Failed to copy ', configSource, ' to ', configDestination);
-            throw err;
-        }
-    });
+    if(fs.existsSync(configDestination))
+    {
+        console.log("Config file ", configDestination, ' already exists. No overriding');
+    }
+    else
+    {
+        copyFile(configSource, configDestination, function(err){
+            if(err)
+            {
+                console.log('Failed to copy ', configSource, ' to ', configDestination);
+                throw err;
+            }
+        });
+    }
 
 })();
