@@ -14,7 +14,8 @@ var server,
     routes = require('./routes'),
     addRoutes = require('./routes/add'),
     editRoutes = require('./routes/edit'),
-    serviceRoutes = require('./routes/service');
+    serviceRoutes = require('./routes/service'),
+    DocPad = require('../docpad');
 
 app.configure(function(){
     app.set('port', process.env.PORT || 3000);
@@ -49,12 +50,13 @@ var docpadInstanceConfiguration = {
     serverHttp: server,
     // Tell it not to load the standard middlewares (as we handled that above)
     middlewareStandard: false,
-    rootPath: path.resolve('../../')
+    rootPath: path.resolve(__dirname, '../../')
 };
-GLOBAL.docpadInstance = require('docpad').createInstance(docpadInstanceConfiguration, function(err){
+
+GLOBAL.docpadInstance = DocPad.createInstance(docpadInstanceConfiguration, function(err){
     if (err)  return console.log(err.stack);
     // Tell DocPad to perform a generation, extend our server with its routes, and watch for changes
-    docpad.action('generate server watch', function(err){
+    GLOBAL.docpadInstance.action('generate server watch', function(err){
         if (err)  return console.log(err.stack);
     });
 });
