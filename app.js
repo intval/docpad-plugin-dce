@@ -20,6 +20,7 @@ app.configure(function(){
     app.set('port', process.env.PORT || 3000);
     app.set('views', __dirname + '/views');
     app.set('view engine', 'jade');
+    app.locals.layoutDirection = typeof(dceConfig.layoutDirection) === 'string' ? dceConfig.layoutDirection : 'ltr' ;
     
     if (dceConfig.useHttpAuth === true) {
         if (process.env.DCE_AUTH_USER && process.env.DCE_AUTH_PASSWORD) {

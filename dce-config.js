@@ -9,7 +9,8 @@
 */
 var config = {
     useHttpAuth: false, //true or false
-    collectionsAvailableForEdit: [] //(e.g.) posts
+    collectionsAvailableForEdit: [], //(e.g.) posts
+    layoutDirection: 'ltr' // ltr (left to right) or rtl
 };
 
 module.exports = config;
