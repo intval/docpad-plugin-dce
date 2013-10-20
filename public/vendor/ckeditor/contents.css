@@ -101,3 +101,12 @@ pre
 .marker {
     background-color: Yellow;
 }
+
+
+
+
+.cke_editable pre.code
+{
+	direction:ltr !important;
+	text-align:left;
+}
