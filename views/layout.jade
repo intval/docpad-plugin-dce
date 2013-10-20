@@ -1,11 +1,11 @@
 doctype 5
 html
-  head(dir=layoutDirection)
+  head
     title= title
     link(rel='stylesheet', href='/vendor/bootstrap/css/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     script(type="text/javascript", src="http://code.jquery.com/jquery-2.0.3.min.js")
-  body
+  body(dir=layoutDirection)
     .navbar.navbar-inverse.navbar-fixed-top
         .navbar-inner
             .container
